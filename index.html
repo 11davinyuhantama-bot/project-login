@@ -1,0 +1,158 @@
+
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Sistem</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #2563eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 430px;
+            padding: 35px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.2);
+        }
+
+        .role-option {
+            cursor: pointer;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 15px 5px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .role-option.active {
+            border-color: #2563eb;
+            background: #eff6ff;
+            color: #2563eb;
+        }
+
+        .role-option input {
+            display: none;
+        }
+
+        .role-option i {
+            font-size: 25px;
+            display: block;
+            margin-bottom: 7px;
+        }
+
+        .btn-login {
+            background: #2563eb;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .btn-login:hover {
+            background: #1d4ed8;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">SISTEM INFORMASI</h2>
+        <p class="text-muted">Silakan masuk ke akun Anda</p>
+    </div>
+
+    <h4 class="fw-bold mb-3">Login Pengguna</h4>
+
+    <form action="proses_login.php" method="POST">
+
+        <label class="form-label fw-semibold">
+            Pilih Jenis Pengguna
+        </label>
+
+        <div class="row g-2 mb-4">
+
+            <div class="col-4">
+                <label class="role-option active w-100">
+                    <input type="radio" name="role"
+                           value="pelanggan" checked>
+                    <i>👤</i>
+                    <small>Pelanggan</small>
+                </label>
+            </div>
+
+            <div class="col-4">
+                <label class="role-option w-100">
+                    <input type="radio" name="role"
+                           value="petugas">
+                    <i>👨‍💼</i>
+                    <small>Petugas</small>
+                </label>
+            </div>
+
+            <div class="col-4">
+                <label class="role-option w-100">
+                    <input type="radio" name="role"
+                           value="admin">
+                    <i>🛡️</i>
+                    <small>Admin</small>
+                </label>
+            </div>
+
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" name="username"
+                   class="form-control form-control-lg"
+                   placeholder="Masukkan username" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label">Password</label>
+            <input type="password" name="password"
+                   class="form-control form-control-lg"
+                   placeholder="Masukkan password" required>
+        </div>
+
+        <button type="submit"
+                class="btn btn-login w-100">
+            MASUK
+        </button>
+
+    </form>
+
+    <p class="text-center text-muted mt-4 mb-0">
+        Belum punya akun?
+        <a href="register.php">Daftar Pelanggan</a>
+    </p>
+
+</div>
+
+<script>
+const options = document.querySelectorAll('.role-option');
+
+options.forEach(option => {
+    option.addEventListener('click', () => {
+        options.forEach(item => item.classList.remove('active'));
+        option.classList.add('active');
+    });
+});
+</script>
+
+</body>
+</html>
